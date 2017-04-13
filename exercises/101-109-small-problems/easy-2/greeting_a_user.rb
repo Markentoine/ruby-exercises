@@ -1,15 +1,13 @@
-def get_name
-  puts 'What is your name?'
-  name = gets.chomp
-end
+# Write a program that will ask for a user's name.
+# The program will then greet the user. If the user
+# writes "name!" then the computer yells back to the user.
 
-def greeter(name)
-  if name[-1] == '!'
-    name = name.chop
-    puts "HELLO #{name.upcase}. WHY ARE WE SCREAMING?"
-  else
-    puts "Hello #{name}."
-  end
-end
+print 'What is your name? '
+name = gets.chomp!
 
-greeter(get_name)
+if name[-1] == '!'
+  name = name.chop!
+  puts "HELLO #{name.upcase}. WHY ARE WE SCREAMING?"
+else
+  puts "Hello #{name}."
+end

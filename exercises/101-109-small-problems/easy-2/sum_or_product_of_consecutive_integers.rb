@@ -1,27 +1,28 @@
+# Write a program that asks the user to enter an integer
+# greater than 0, then asks if the user wants to determine
+# the sum or product of all numbers between 1 and the
+# entered integer.
+
 while true
-  puts 'Hello, please enter an integer greater than 0:'
-  input_value = gets.chomp.to_i
-  break if input_value.is_a?(Integer) && input_value > 0 
-  puts 'Not a valid number, please enter a integer greater than 0: '
-  input_value = gets.chomp
+  print 'Please enter an integer greater than 0:'
+  input_integer = gets.to_i
+  break if input_integer > 0
+  puts 'Please note that the integer should be greater than 0'
 end
 
-def choose_operation(sum, prod, input)
-  puts "Enter 's' to compute the sum, 'p' to compute the product."
-  operation = gets.chomp.downcase
-  if operation == 's'
-    puts "The sum of the integers between 1 and #{input} is #{sum}"
-  elsif operation == 'p'
-    puts "The proudct of the integers between 1 and #{input} is #{prod}"
-  end  
-end
+sum = 1.upto(input_integer).reduce(:+)
+product = 1.upto(input_integer).reduce(1, :*)
+while true
+  print "Please enter 's' to compute the sum, or 'p' to compute the product."
+  conditional_input = gets.chomp
 
-def perform_summation(arg)
-  sum = (1..arg).inject { |sum, n| sum + n }
+  if conditional_input == 's'
+    puts "The sum of integers between 1 and #{input_integer} is #{sum}."
+    exit
+  elsif conditional_input== 'p'
+    puts "The product of integers between 1 and #{input_integer} is #{product}"
+    exit
+  else
+    puts "Please select either 'p' or 's'"
+  end
 end
-
-def perform_product(arg)
-  product = (1..arg).inject { |sum, n| sum * n }
-end
-
-choose_operation(perform_summation(input_value), perform_product(input_value), input_value)

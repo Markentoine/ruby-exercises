@@ -1,11 +1,15 @@
-# Write a method that takes one argument, a positive integer, and returns a
-# list of the digits in the number.
+# Write a method that takes one argument, a positive
+# integer, and returns a list of the digits in the
+# number.
 
-def digit_list(number)
-  number.to_s.chars.map(&:to_i)
+def digit_list(input_integer)
+  input_integer.to_s.chars.map(&:to_i)
 end
 
-puts digit_list(123_45) == [1, 2, 3, 4, 5]
-puts digit_list(7) == [7]
-puts digit_list(375_290) == [3, 7, 5, 2, 9, 0]
-puts digit_list(444) == [4, 4, 4]
+puts "Please give me a positive integer. I'll split it up into it's digits"
+user_input = gets.to_i
+
+while user_input < 1
+  puts 'That is not a valid input. Try a integer above zero'
+  user_input = gets.to_i
+end

@@ -2,25 +2,29 @@
 # string of alternating 1s and 0s, always starting with 1. The length of the
 # string should match the given integer.
 
-def stringy(size, start_w_zero = 1)
-  numbers = []
 
-  if start_w_zero.zero? 0
-    size.times do |index|
-      number = index.even? ? 0 : 1
-      numbers << number
+def stringy(length, opt = 1)
+  binary = ''
+  counter = 0
+
+  if length < 1
+    puts 'Oops, try a positive integer for input'
+    exit
+  end
+
+  if opt == 1
+    length.times do
+      counter.remainder(2) == 0 ? binary << '1' : binary << '0'
+      counter += 1
     end
-
-  else
-    size.times do |index|
-      number = index.even? ? 1 : 0
-      numbers << number
+  elsif opt == 0
+    length.times do
+      counter.remainder(2) == 0 ? binary << '0' : binary << '1'
+      counter += 1
     end
   end
-  numbers.join
+  binary
 end
 
-puts stringy(5)
-puts stringy(6)
-puts stringy(5, 0)
-puts stringy(6, 0)
+p stringy(6, 0)
+p stringy(9, 0)

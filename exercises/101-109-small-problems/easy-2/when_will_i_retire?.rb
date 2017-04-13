@@ -1,13 +1,28 @@
-def calculate_retirement_age
-  year = 2016
-  puts 'What is your age?'
-  age = gets.to_i
+# Build a program that displays when the user will
+# retire and how many years she has to work till
+# retirement.
 
-  puts 'At what age would you like to retire?'
+def when_will_I_retire?
+  year = Time.now.year
+  while true
+    puts 'What is your age?'
+    age = gets.to_i
+    break if age >= 0
+    puts "You can't work if your age is negative"
+  end
+
+  puts "At what age would you like to retire?"
   retirement_age = gets.to_i
-  years_left = retirement_age - age
-  puts "It's #{year}. You will retire in #{year + years_left}."
-  puts "You only have #{years_left} years of work to go!"
+
+  if retirement_age < age
+    puts 'You are already retired'
+    exit
+  end
+
+  years_to_retirement = retirement_age - age
+
+  puts "Its #{year}. You will retire in #{year+years_to_retirement}."
+  puts "You have only #{years_to_retirement} years of work to go!"
 end
 
-calculate_retirement_age
+when_will_I_retire?

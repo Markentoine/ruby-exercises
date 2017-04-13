@@ -4,10 +4,15 @@
 # assume that only integers are passed in as arguments.
 
 def is_odd?(number)
-  number % 2 == 1
+  number.abs.remainder(2) != 0
 end
 
-puts is_odd?(2)
-puts is_odd?(5)
-puts is_odd?(-17)
-puts is_odd?(-8)
+puts 'Please enter a integer, I will evaluate if its odd.'
+user_input = gets.to_i
+
+while user_input == 0
+  puts 'Please input a number different than 0'
+  user_input = gets.to_i
+end
+
+puts is_odd?(user_input)
